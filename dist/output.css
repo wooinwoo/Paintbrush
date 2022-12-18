@@ -513,10 +513,20 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.m-20 {
-  margin: 5rem;
+.h-\[500px\] {
+  height: 500px;
 }
 
-.mt-10 {
-  margin-top: 2.5rem;
+.w-\[300px\] {
+  width: 300px;
+}
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
