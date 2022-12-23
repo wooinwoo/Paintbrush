@@ -1,11 +1,12 @@
-import { useState } from "react";
 import "./App.css";
 import Canvas from "./components/canvas";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <Canvas />;
+  return (
+    <div className="pt-10 bg-gray-300 h-screen">
+      <Canvas />
+    </div>
+  );
 }
 
 export default App;
