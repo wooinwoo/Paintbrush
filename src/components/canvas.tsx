@@ -8,8 +8,8 @@ export default function Canvas() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    canvas.width = window.innerWidth * 0.81;
-    canvas.height = window.innerHeight * 0.8;
+    canvas.width = window.innerWidth * 0.9;
+    canvas.height = window.innerWidth * 0.8;
 
     const context = canvas.getContext("2d");
     context.strokeStyle = "black";
@@ -48,6 +48,6 @@ export default function Canvas() {
       onMouseUp={finishDrawing}
       onMouseMove={drawing}
       onMouseLeave={finishDrawing}
-      className="round m-auto bg-gray-50"></canvas>
+      className="rounded-lg m-auto bg-gray-50"></canvas>
   );
 }
