@@ -2,6 +2,7 @@ import "./App.css";
 import Canvas from "./components/canvas";
 import ColorPicker from "./components/colorPicker";
 import LineThickness from "./components/lineThickness";
+import Eraser from "./components/eraser";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Canvas />
       <ColorPicker />
       <LineThickness />
+      <Eraser />
     </div>
   );
 }

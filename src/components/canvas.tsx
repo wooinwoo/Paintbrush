@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { eraserMode } from "../state/Recoil";
 export default function Canvas() {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
   const [ctx, setCtx] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
+  const eraser = useRecoilValue(eraserMode);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -28,10 +31,13 @@ export default function Canvas() {
   };
 
   const drawing = ({ nativeEvent }) => {
+    console.log(nativeEvent);
     const { offsetX, offsetY } = nativeEvent;
 
     if (ctx) {
-      if (!isDrawing) {
+      if (eraser && isDrawing) {
+        ctx.clearRect(offsetX, offsetY, 50, 50);
+      } else if (!isDrawing) {
         ctx.beginPath();
         ctx.moveTo(offsetX, offsetY);
       } else {
@@ -42,12 +48,14 @@ export default function Canvas() {
   };
 
   return (
-    <canvas
-      ref={canvasRef}
-      onMouseDown={startDrawing}
-      onMouseUp={finishDrawing}
-      onMouseMove={drawing}
-      onMouseLeave={finishDrawing}
-      className="rounded-lg m-auto bg-gray-50"></canvas>
+    <>
+      <canvas
+        ref={canvasRef}
+        onMouseDown={startDrawing}
+        onMouseUp={finishDrawing}
+        onMouseMove={drawing}
+        onMouseLeave={finishDrawing}
+        className="rounded-lg m-auto bg-gray-50"></canvas>
+    </>
   );
 }
