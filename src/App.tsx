@@ -1,7 +1,7 @@
 import "./App.css";
 import Canvas from "./components/canvas";
 import ColorPicker from "./components/colorPicker";
-import LineThickness from "./components/lineThickness";
+import LineThickness from "./components/lineRange";
 import Eraser from "./components/eraser";
 
 function App() {

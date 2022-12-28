@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { eraserMode } from "../state/Recoil";
+import { eraserMode, lineRangeValue } from "../state/Recoil";
 export default function Canvas() {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -8,6 +8,7 @@ export default function Canvas() {
   const [ctx, setCtx] = useState("");
   const [isDrawing, setIsDrawing] = useState(false);
   const eraser = useRecoilValue(eraserMode);
+  const lineValue = useRecoilValue(lineRangeValue);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -16,11 +17,11 @@ export default function Canvas() {
 
     const context = canvas.getContext("2d");
     context.strokeStyle = "black";
-    context.lineWidth = 2.5;
+    context.lineWidth = lineValue;
     contextRef.current = context;
 
     setCtx(context);
-  }, []);
+  }, [lineValue]);
 
   const startDrawing = () => {
     setIsDrawing(true);
@@ -31,7 +32,6 @@ export default function Canvas() {
   };
 
   const drawing = ({ nativeEvent }) => {
-    console.log(nativeEvent);
     const { offsetX, offsetY } = nativeEvent;
 
     if (ctx) {
