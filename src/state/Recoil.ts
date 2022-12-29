@@ -6,5 +6,10 @@ export const eraserMode = atom({
 
 export const lineRangeValue = atom({
   key: "lineRangeValue",
-  default: 0,
+  default: 1,
+});
+
+export const lineColor = atom({
+  key: "lineColor",
+  default: "black",
 });
