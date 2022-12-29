@@ -12,14 +12,18 @@ export default function Canvas() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
     canvas.width = window.innerWidth * 0.9;
     canvas.height = window.innerWidth * 0.8;
+    setCtx(context);
+  }, []);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     context.strokeStyle = "black";
     context.lineWidth = lineValue;
     contextRef.current = context;
-
     setCtx(context);
   }, [lineValue]);
 
@@ -36,7 +40,7 @@ export default function Canvas() {
 
     if (ctx) {
       if (eraser && isDrawing) {
-        ctx.clearRect(offsetX, offsetY, 50, 50);
+        ctx.clearRect(offsetX, offsetY, lineValue, lineValue);
       } else if (!isDrawing) {
         ctx.beginPath();
         ctx.moveTo(offsetX, offsetY);
